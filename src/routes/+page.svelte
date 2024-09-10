@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Carousel from '$lib/carousel/carousel.svelte';
+	import Nosotros from '$lib/nosotros/nosotros.svelte';
+	import Servicios from '$lib/servicios/servicios.svelte';
+	import Clientes from '$lib/clientes/clientes.svelte';
+	import Contacto from '$lib/contacto/contacto.svelte';
+</script>
+
+<Carousel />
+<Nosotros />
+<Servicios />
+<Clientes />
+<Contacto />
+
+<style>
+</style>
