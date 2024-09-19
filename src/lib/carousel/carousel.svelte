@@ -6,12 +6,16 @@
 
 	let images = [
 		{
-			src: 'jardinero-weedwacker-cortando-cesped-jardin.jpg',
+			src: 'jardinero-weedwacker-cortando-cesped-jardin.webp',
 			alt: 'Image 1',
 			info: 'Servicios de jardineria'
 		},
-		{ src: 'pool-5055009.jpg', alt: 'Image 3', info: 'Mantenimiento de piscinas' },
-		{ src: 'side-view-people-cleaning-building.jpg', alt: 'Image 4', info: 'Servicios de Limpieza' }
+		{ src: 'pool-5055009.webp', alt: 'Image 3', info: 'Mantenimiento de piscinas' },
+		{
+			src: 'side-view-people-cleaning-building.webp',
+			alt: 'Image 4',
+			info: 'Servicios de Limpieza'
+		}
 	];
 
 	const next = () => {
@@ -41,7 +45,7 @@
 			{#each images as { src, alt, info }, i}
 				<div
 					class="carousel-item {i === currentIndex ? 'active' : ''}"
-					style="background-image: url({src});"
+					style="background-image: url({src}); background-size: cover;"
 				>
 					<div class="info-container {i === currentIndex ? 'animate' : ''}">
 						<div class="info">{info}</div>
@@ -180,6 +184,9 @@
 	.info-container.animate {
 		opacity: 1;
 		top: 50%;
+		transition:
+			opacity 0.5s ease-in-out,
+			top 0.5s ease-in-out; /* Reducir el tiempo de la transición */
 	}
 
 	.info {
