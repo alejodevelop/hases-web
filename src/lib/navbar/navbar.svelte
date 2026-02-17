@@ -2,7 +2,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 
-	let isMenuOpen = false;
+	let isMenuOpen = $state(false);
 
 	const toggleMenu = () => {
 		isMenuOpen = !isMenuOpen;
@@ -47,7 +47,7 @@
 			<img src="./logoHases-removebg.webp" alt="logo hases" width="50px" height="50px" />
 			<li><strong>HASES</strong></li>
 		</ul>
-		<button class="menu-button" on:click={toggleMenu}> &#9776; </button>
+		<button class="menu-button" onclick={toggleMenu}> &#9776; </button>
 		<ul class="links {isMenuOpen ? 'open' : ''}">
 			<li><a href="/" class="contrast">Inicio</a></li>
 			<li><a href="/nosotros" class="contrast">Nosotros</a></li>

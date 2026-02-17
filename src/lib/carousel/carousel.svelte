@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let currentIndex = 0;
+	let currentIndex = $state(0);
 	let interval: any;
 
 	let images = [
@@ -59,14 +59,14 @@
 				<button
 					type="button"
 					class={i === currentIndex ? 'active' : ''}
-					on:click={() => (currentIndex = i)}
-					on:keydown={(e) => e.key === 'Enter' && (currentIndex = i)}
+					onclick={() => (currentIndex = i)}
+					onkeydown={(e) => e.key === 'Enter' && (currentIndex = i)}
 				></button>
 			{/each}
 		</ul>
 
-		<button class="prev" on:click={prev}>&#10094;</button>
-		<button class="next" on:click={next}>&#10095;</button>
+		<button class="prev" onclick={prev}>&#10094;</button>
+		<button class="next" onclick={next}>&#10095;</button>
 	</div>
 </section>
 

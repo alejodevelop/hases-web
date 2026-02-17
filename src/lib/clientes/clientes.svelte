@@ -1,9 +1,9 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
 
-    let currentIndex = 0;
+    let currentIndex = $state(0);
     let interval: any;
-    let fadeOut = false;
+    let fadeOut = $state(false);
 
     const clientes = [
         { name: 'Reservas de Caña Brava', logo: 'reservasCanaBrava.webp', testimonial: 'Excelente servicio y mantenimiento de áreas verdes.' },
