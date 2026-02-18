@@ -1,16 +1,21 @@
 <script lang="ts">
-    import type { LayoutData } from './$types';
-    import Navbar from '$lib/navbar/navbar.svelte';
-    
-    interface Props {
-        data: LayoutData;
-        children?: import('svelte').Snippet;
-    }
+	import type { LayoutData } from './$types';
+	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
-    let { data, children }: Props = $props();
+	interface Props {
+		data: LayoutData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 </script>
 
-<div>
-    <Navbar />
-    {@render children?.()}
+<div class="bg-background-dark min-h-screen flex flex-col">
+	<Header />
+	<main class="flex-grow pt-[60px]">
+		{@render children?.()}
+	</main>
+	<Footer />
 </div>

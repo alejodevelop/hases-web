@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HASES Premium Home</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "primary-dark": "#0e46b9",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622", // Deep charcoal
+              "gold-accent": "#D4AF37",
+              "surface-dark": "#1c1f27",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"],
+              "body": ["Manrope", "sans-serif"], // Using Manrope for body as well per request
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+            boxShadow: {
+                "glow": "0 0 15px rgba(19, 91, 236, 0.3)",
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3342;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #135bec;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-20">
+<!-- Header / Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-background-dark/80 backdrop-blur-md px-4 py-3 border-b border-white/5 transition-all duration-300">
+<div class="flex items-center gap-3">
+<button class="text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<h1 class="text-white text-lg font-bold tracking-[0.1em] uppercase">Hases</h1>
+<span class="text-[10px] text-gold-accent tracking-widest uppercase">Premium Home</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[60px]">
+<!-- Hero Section -->
+<section class="@container relative">
+<div class="relative h-[85vh] w-full overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-105" data-alt="Modern luxury villa with pool and garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcJnH_fxsJyit4a2wAX17sBhyW-_wmAcDrqbJMWmBYmPdrxcm3HSL9AgQzFbCUHQkVttrzWFUc7ksZH95jxKjymI28pTeMslBZkFC6BN1DGIPIAOosqrCGr0xNmZEwdQvlgaqhb-gDhV0V50QmvOgsteEunMpxf1l5Lwl3gk8KlIuQnAKSbQQm0tqYOCuvhh43ck_sdlzsfaZQGa2NFLNcJuMFMxRUOGWkDui3lPHKG_1ev20pdDSYEx5m3dgcKgzXZ5O_xtDz4Lmv");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark/30 via-background-dark/10 to-background-dark"></div>
+<!-- Hero Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-end px-6 pb-12 text-center">
+<div class="mb-2 h-1 w-12 bg-gold-accent rounded-full"></div>
+<h2 class="text-white text-4xl @[480px]:text-6xl font-light mb-4 tracking-tight leading-tight">
+                            Elevando el <br/><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-400">Estándar</span> de su Hogar
+                        </h2>
+<p class="text-gray-300 text-sm @[480px]:text-lg font-light leading-relaxed max-w-md mb-8">
+                            Limpieza, mantenimiento y jardinería exclusiva para residencias que exigen perfección.
+                        </p>
+<button class="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-4 text-white shadow-glow transition-all hover:scale-105 hover:bg-primary-dark">
+<span class="relative z-10 text-sm font-bold tracking-wide uppercase">Solicitar Presupuesto Premium</span>
+<span class="material-symbols-outlined relative z-10 text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<div class="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="px-4 py-8 space-y-2">
+<div class="flex items-center justify-between px-2 mb-6">
+<h3 class="text-white text-2xl font-light tracking-wide">Servicios de <span class="font-bold text-gold-accent">Élite</span></h3>
+<button class="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                        Ver todo <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Service Card 1: Cleaning -->
+<div class="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-surface-dark shadow-lg">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Pristine marble living room interior" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-06gW8vj4nu8mwyPYkOzGuiaIsJAb1EwCBpJJ7l8f-s8VIESBJTTQwp3L37l5QXiBMTHNjtFLw-aH-wBLD4OYkSrgqXULuyeQ1mwNL7MTe1P6IfkgBPGb_O57c2OK15iMqY1Xqv9D3pDoiscR90gZ-zFFZp4ral26D8r8LLGvc10fiXnW5QyRuBJd-FT6cpmtTxjuEeUE33hCDBfZLV9wbQlvZRdZqTfHPq_fHhTp3Vn2E3Wr2ul1ULiLdtuuHmxX1sOM5M3ewcpe");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-white">cleaning_services</span>
+</div>
+<h4 class="text-xl font-bold text-white mb-2">Limpieza Integral</h4>
+<p class="text-sm text-gray-300 line-clamp-2 mb-4">Cuidado meticuloso para interiores de mármol, superficies delicadas y obras de arte.</p>
+<button class="text-xs font-bold text-primary hover:text-white transition-colors flex items-center gap-1 uppercase tracking-wider">
+                            Detalles <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service Card 2: Gardening -->
+<div class="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-surface-dark shadow-lg mt-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Manicured luxury garden with pool" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJ9BeipwJDDpASoVjrLyyI5GGPFVFCvgwZGEw7aLDiqJGt6WybOcIOYvcu0hmErR_IWDzqe2ozxS8b6DE3AiwWZEBJZL_0zO-dZUbxhxmbmeknVrUt1QOf_EBBWC3txZDGcaySQGNgbbeDEmwhRloiFUUsF036gF0vBOxd8Ooc_eSgspEw3wj_GLq_VxJ4Bj3-HKHTKjigjUZVOPa3qj5duiwraV_U6hmYvTaYKVYNlGIiloEUjirK5YwiNRhW6UVA3icMEzErsrnm");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-white">yard</span>
+</div>
+<h4 class="text-xl font-bold text-white mb-2">Jardinería de Diseño</h4>
+<p class="text-sm text-gray-300 line-clamp-2 mb-4">Mantenimiento experto para jardines zen, piscinas infinity y paisajismo de autor.</p>
+<button class="text-xs font-bold text-primary hover:text-white transition-colors flex items-center gap-1 uppercase tracking-wider">
+                            Detalles <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service Card 3: Maintenance -->
+<div class="group relative h-[400px] w-full overflow-hidden rounded-2xl bg-surface-dark shadow-lg mt-6">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Modern smart home control panel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_8PMUYxXNGe_96TUfUnzeQttMhHK7pn9RCiKpNKPfuNspHCni6Ut1DWvWviVm-28OV3-DoIeRuR-jke-Ne0ytBBAmreSRpz75-bzPVmBuWbYqmlb6_R3xrnbjZcNPod90AuDApdGOgX8BbksCk2ZTHTIP7haAJfD2HWAPl-omiZxIvoagogE4iarIZ96fSzRkekmQlokLcbYLUaMQgq9U33g1rrQvj2_eW1dfZFFMamLFfsNxRvWiWo17cX1ducq2Nj31d-k5_WUc");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined text-white">home_iot_device</span>
+</div>
+<h4 class="text-xl font-bold text-white mb-2">Mantenimiento Técnico</h4>
+<p class="text-sm text-gray-300 line-clamp-2 mb-4">Gestión preventiva de sistemas inteligentes, climatización y seguridad.</p>
+<button class="text-xs font-bold text-primary hover:text-white transition-colors flex items-center gap-1 uppercase tracking-wider">
+                            Detalles <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Trust Section / Compromiso -->
+<section class="bg-surface-dark py-16 px-6 my-8 mx-4 rounded-3xl relative overflow-hidden">
+<!-- Decorative Elements -->
+<div class="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -ml-16 -mb-16 h-64 w-64 rounded-full bg-gold-accent/5 blur-3xl"></div>
+<div class="relative z-10 text-center">
+<span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-gold-accent text-xs font-bold tracking-widest uppercase mb-6">
+                        Nuestro Compromiso
+                    </span>
+<h3 class="text-white text-2xl md:text-3xl font-light mb-8 leading-snug">
+                        "La verdadera exclusividad reside en la <span class="text-white font-bold border-b border-primary">discreción</span> y el <span class="text-white font-bold border-b border-gold-accent">detalle</span>."
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="flex flex-col items-center gap-3">
+<div class="p-3 rounded-full bg-background-dark border border-white/10 text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<h5 class="text-white font-bold">Confianza Absoluta</h5>
+<p class="text-gray-400 text-sm">Personal rigurosamente verificado y asegurado.</p>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="p-3 rounded-full bg-background-dark border border-white/10 text-primary">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<h5 class="text-white font-bold">Calidad Premium</h5>
+<p class="text-gray-400 text-sm">Productos ecológicos de gama alta y tecnología punta.</p>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="p-3 rounded-full bg-background-dark border border-white/10 text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h5 class="text-white font-bold">Disponibilidad 24/7</h5>
+<p class="text-gray-400 text-sm">Servicio de urgencias para suscriptores Gold.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial / Social Proof -->
+<section class="px-6 py-12 text-center">
+<div class="flex justify-center mb-4">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-gold-accent text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-gold-accent text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-gold-accent text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-gold-accent text-sm fill-current">star</span>
+<span class="material-symbols-outlined text-gold-accent text-sm fill-current">star</span>
+</div>
+</div>
+<p class="text-gray-300 italic text-lg mb-4">"HASES transformó la gestión de mi segunda residencia. Impecable es quedarse corto."</p>
+<div class="flex items-center justify-center gap-3">
+<div class="h-10 w-10 rounded-full bg-gray-600 bg-cover bg-center" data-alt="Portrait of a satisfied client" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAvbffBk8AGChbuGISnlGz0yLigCmkQlAJY_vMmL-5v7jtJ65erdOV4Il7eNegme2aBdM7Jzsv_Hgk5wGSXwSvUPvhNmfYKf0kk34MQFc2o0XwV3lxbv9Hc-TwfdfZ26Simqdbsj3mBcsawTcCchrjvSpOqctPI-f6Lw6Z83rhn3iWln9tvZAGnkxQO5vv2YAnKGpsffzZcVSmMZOplbp_8b5XbwpC7Xe0tN3p00k8_awQkHz_Vqe-lBoCUgmItpo4gMcru5forkIj");'></div>
+<div class="text-left">
+<p class="text-white text-sm font-bold">Carlos M.</p>
+<p class="text-gray-500 text-xs">Cliente Premium desde 2021</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dark border-t border-white/5 py-12 px-6">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+<div class="text-center md:text-left">
+<h2 class="text-white text-2xl font-bold tracking-[0.1em] uppercase mb-1">Hases</h2>
+<p class="text-gray-500 text-xs uppercase tracking-widest">Premium Services</p>
+</div>
+<div class="flex gap-6">
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">call</span></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">location_on</span></a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 text-sm text-gray-400 mb-8 max-w-sm mx-auto md:mx-0">
+<a class="hover:text-primary transition-colors text-center md:text-left" href="#">Servicios</a>
+<a class="hover:text-primary transition-colors text-center md:text-left" href="#">Sobre Nosotros</a>
+<a class="hover:text-primary transition-colors text-center md:text-left" href="#">Área Clientes</a>
+<a class="hover:text-primary transition-colors text-center md:text-left" href="#">Contacto</a>
+</div>
+<div class="border-t border-white/5 pt-8 text-center flex flex-col gap-2">
+<p class="text-gray-600 text-xs">© 2024 HASES Premium Home. Todos los derechos reservados.</p>
+<div class="flex justify-center gap-4 text-xs text-gray-600">
+<a class="hover:text-gray-400" href="#">Privacidad</a>
+<a class="hover:text-gray-400" href="#">Términos</a>
+</div>
+</div>
+</footer>
+<!-- Sticky Floating CTA for Mobile -->
+<div class="fixed bottom-6 left-0 right-0 z-40 flex justify-center px-4 md:hidden pointer-events-none">
+<button class="pointer-events-auto bg-primary/90 backdrop-blur-md text-white px-6 py-3 rounded-full shadow-glow flex items-center gap-2 text-sm font-bold animate-fade-in-up border border-primary-dark">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                Agendar Cita
+            </button>
+</div>
+</div>
+</body></html>
