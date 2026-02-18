@@ -28,14 +28,30 @@
 
 <section id="inicio" class="relative w-full">
 	<div class="relative h-[85vh] w-full overflow-hidden">
-		<!-- Background Slides -->
-		{#each slides as slide, i}
-			<div
-				class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
-				style="background-image: url('{slide.image}'); opacity: {i === currentSlide ? 1 : 0};"
-				role="img"
-				aria-label={slide.alt}
-			></div>
+		<!-- First slide: static fetchpriority="high" for LCP detection -->
+		<img
+			src={slides[0].image}
+			alt={slides[0].alt}
+			class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+			style="opacity: {0 === currentSlide ? 1 : 0};"
+			loading="eager"
+			fetchpriority="high"
+			decoding="sync"
+			width="1920"
+			height="1080"
+		/>
+		<!-- Remaining slides: lazy loaded -->
+		{#each slides.slice(1) as slide, i}
+			<img
+				src={slide.image}
+				alt={slide.alt}
+				class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+				style="opacity: {i + 1 === currentSlide ? 1 : 0};"
+				loading="lazy"
+				decoding="async"
+				width="1920"
+				height="1080"
+			/>
 		{/each}
 
 		<!-- Gradient Overlay -->
