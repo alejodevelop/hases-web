@@ -17,9 +17,9 @@
 			scope: 'Interiores, zonas comunes y apoyo diario'
 		},
 		{
-			title: 'Jardineria y paisajismo',
+			title: 'Jardinería y paisajismo',
 			description:
-				'Disenamos, cuidamos y preservamos zonas verdes para garantizar entornos seguros y bien presentados.',
+				'Diseñamos, cuidamos y preservamos zonas verdes para garantizar entornos seguros y bien presentados.',
 			image: '/jardinero.webp',
 			icon: 'yard',
 			scope: 'Mantenimiento, poda y embellecimiento'
@@ -33,12 +33,12 @@
 			scope: 'Piscineros, salvavidas e insumos'
 		},
 		{
-			title: 'Apoyo operativo y gestion ambiental',
+			title: 'Apoyo operativo y gestión ambiental',
 			description:
-				'Fortalecemos la operacion de nuestros clientes con auxiliares, servicios complementarios y enfoque en sostenibilidad.',
+				'Fortalecemos la operación de nuestros clientes con auxiliares, servicios complementarios y enfoque en sostenibilidad.',
 			image: '/serviciosVarios.webp',
 			icon: 'groups_2',
-			scope: 'Auxiliares, residuos y asesoria ambiental'
+			scope: 'Auxiliares, residuos y asesoría ambiental'
 		}
 	];
 </script>
@@ -50,7 +50,7 @@
 				Servicios <span class="font-bold text-gold-accent">integrales</span>
 			</h3>
 			<p class="text-sm text-gray-400 mt-2 max-w-2xl">
-				Soluciones diseñadas para organizaciones que necesitan operacion continua, calidad y
+				Soluciones diseñadas para organizaciones que necesitan operación continua, calidad y
 				cumplimiento.
 			</p>
 		</div>

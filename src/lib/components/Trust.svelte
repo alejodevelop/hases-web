@@ -11,13 +11,13 @@
 			icon: 'military_tech'
 		},
 		{
-			title: 'Innovacion',
-			description: 'Incorporamos mejores practicas y herramientas para aumentar la eficiencia.',
+			title: 'Innovación',
+			description: 'Incorporamos mejores prácticas y herramientas para aumentar la eficiencia.',
 			icon: 'neurology'
 		},
 		{
 			title: 'Sostenibilidad',
-			description: 'Aplicamos criterios de economia circular y gestion responsable de recursos.',
+			description: 'Aplicamos criterios de economía circular y gestión responsable de recursos.',
 			icon: 'recycling'
 		},
 		{
@@ -48,15 +48,15 @@
 		<span
 			class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-gold-accent text-xs font-bold tracking-widest uppercase mb-6"
 		>
-			Quienes somos
+			Quiénes somos
 		</span>
 		<h3 class="text-white text-2xl md:text-3xl font-light mb-8 leading-snug">
-			Aliados estrategicos en <span class="text-white font-bold border-b border-primary"
-				>aseo, mantenimiento y operacion</span
+			Aliados estratégicos en <span class="text-white font-bold border-b border-primary"
+				>aseo, mantenimiento y operación</span
 			> para organizaciones de Neiva y el Huila.
 		</h3>
 		<p class="mx-auto max-w-3xl text-sm md:text-base text-gray-300 leading-relaxed">
-			HASES INGENIERIA S.A.S. integra calidad operativa, capacitacion del talento humano y
+			HASES INGENIERIA S.A.S. integra calidad operativa, capacitación del talento humano y
 			compromiso ambiental para entregar soluciones confiables, sostenibles y alineadas con la
 			mejora continua.
 		</p>

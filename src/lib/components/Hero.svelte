@@ -69,7 +69,7 @@
 				>
 			</h1>
 			<p class="text-gray-300 text-sm md:text-lg font-light leading-relaxed max-w-md mb-8">
-				Aseo, jardineria, mantenimiento de piscinas y apoyo operativo con enfoque sostenible en
+				Aseo, jardinería, mantenimiento de piscinas y apoyo operativo con enfoque sostenible en
 				Neiva y el Huila.
 			</p>
 			<div class="flex flex-col sm:flex-row items-center gap-3">
@@ -78,7 +78,7 @@
 					class="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-4 text-white shadow-glow transition-all hover:scale-105 hover:bg-primary-dark"
 				>
 					<span class="relative z-10 text-sm font-bold tracking-wide uppercase"
-						>Solicitar cotizacion</span
+						>Solicitar cotización</span
 					>
 					<span
 						class="material-symbols-outlined relative z-10 text-[20px] group-hover:translate-x-1 transition-transform"

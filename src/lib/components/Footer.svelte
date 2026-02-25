@@ -9,7 +9,7 @@
 				<h2 class="text-white text-2xl font-bold tracking-[0.1em] uppercase mb-2">Hases</h2>
 				<p class="text-gold-accent text-xs uppercase tracking-widest mb-4">Ingenieria S.A.S.</p>
 				<p class="text-sm text-gray-400 leading-relaxed">
-					Soluciones integrales de aseo, mantenimiento, jardineria y gestion ambiental para
+					Soluciones integrales de aseo, mantenimiento, jardinería y gestión ambiental para
 					organizaciones en Neiva y el Huila.
 				</p>
 			</div>
@@ -55,7 +55,7 @@
 			</div>
 
 			<div>
-				<h3 class="text-sm font-bold uppercase tracking-wide text-white mb-4">Navegacion</h3>
+				<h3 class="text-sm font-bold uppercase tracking-wide text-white mb-4">Navegación</h3>
 				<div class="flex flex-col gap-2 text-sm text-gray-300">
 					<a class="hover:text-primary transition-colors" href="#inicio">Inicio</a>
 					<a class="hover:text-primary transition-colors" href="#servicios">Servicios</a>
@@ -72,7 +72,7 @@
 			</p>
 			<div class="flex justify-center gap-4 text-xs text-gray-500">
 				<a class="hover:text-gray-300 transition-colors" href="/privacidad">Privacidad</a>
-				<a class="hover:text-gray-300 transition-colors" href="/terminos">Terminos</a>
+				<a class="hover:text-gray-300 transition-colors" href="/terminos">Términos</a>
 			</div>
 		</div>
 	</div>

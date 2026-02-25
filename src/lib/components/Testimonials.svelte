@@ -27,7 +27,7 @@
 			image: '/altos-pradera.webp',
 			alt: 'Condominio Campestre Altos de la Pradera',
 			comment:
-				'Acompanamiento constante en aseo de zonas comunes y una operacion ordenada para el cuidado diario de la copropiedad.',
+				'Acompañamiento constante en aseo de zonas comunes y una operación ordenada para el cuidado diario de la copropiedad.',
 			context: 'Condominio campestre'
 		},
 		{
@@ -35,15 +35,15 @@
 			image: '/encenillo-reservado.webp',
 			alt: 'Condominio Encenillo Reservado',
 			comment:
-				'Soporte operativo confiable para mantener la presentacion, limpieza y funcionalidad de espacios comunes.',
+				'Soporte operativo confiable para mantener la presentación, limpieza y funcionalidad de espacios comunes.',
 			context: 'Condominio residencial'
 		},
 		{
-			name: 'Conjunto Reservas de Cana Brava',
+			name: 'Conjunto Reservas de Caña Brava',
 			image: '/reservas-cana-brava.webp',
-			alt: 'Conjunto Reservas de Cana Brava',
+			alt: 'Conjunto Reservas de Caña Brava',
 			comment:
-				'Atencion oportuna para rutinas de aseo y mantenimiento, con continuidad en los estandares de servicio.',
+				'Atención oportuna para rutinas de aseo y mantenimiento, con continuidad en los estándares de servicio.',
 			context: 'Conjunto residencial'
 		},
 		{
@@ -51,7 +51,7 @@
 			image: '/turipana-neiva.webp',
 			alt: 'Conjunto Turipana',
 			comment:
-				'Coordinacion efectiva del servicio para apoyar la operacion diaria y el bienestar de residentes y visitantes.',
+				'Coordinación efectiva del servicio para apoyar la operación diaria y el bienestar de residentes y visitantes.',
 			context: 'Conjunto residencial'
 		},
 		{
@@ -59,7 +59,7 @@
 			image: '/zaragoza.webp',
 			alt: 'Condominio Zaragoza',
 			comment:
-				'Gestion integral enfocada en limpieza, presentacion y acompanamiento permanente a la administracion.',
+				'Gestión integral enfocada en limpieza, presentación y acompañamiento permanente a la administración.',
 			context: 'Condominio residencial'
 		},
 		{
@@ -67,7 +67,7 @@
 			image: '/paseo-castellana.webp',
 			alt: 'Condominio Paseo de la Castellana',
 			comment:
-				'Servicio profesional orientado a mantener espacios seguros, limpios y listos para la operacion continua.',
+				'Servicio profesional orientado a mantener espacios seguros, limpios y listos para la operación continua.',
 			context: 'Condominio residencial'
 		},
 		{
@@ -75,7 +75,7 @@
 			image: '/bosques-cantabria.webp',
 			alt: 'Condominio Bosques de Cantabria',
 			comment:
-				'Operacion consistente con enfoque en detalle para conservar la calidad de zonas comunes y exteriores.',
+				'Operación consistente con enfoque en detalle para conservar la calidad de zonas comunes y exteriores.',
 			context: 'Condominio residencial'
 		},
 		{
@@ -87,11 +87,11 @@
 			context: 'Condominio residencial'
 		},
 		{
-			name: 'Condominio San Jeronimo',
+			name: 'Condominio San Jerónimo',
 			image: '/san-jeronimo.webp',
-			alt: 'Condominio San Jeronimo',
+			alt: 'Condominio San Jerónimo',
 			comment:
-				'Atencion cercana y planificada para sostener la calidad operativa en las diferentes areas del conjunto.',
+				'Atención cercana y planificada para sostener la calidad operativa en las diferentes áreas del conjunto.',
 			context: 'Condominio residencial'
 		},
 		{
@@ -99,7 +99,7 @@
 			image: '/lucca.webp',
 			alt: 'Condominio Lucca',
 			comment:
-				'Respaldo integral para la administracion con procesos claros y seguimiento continuo del servicio.',
+				'Respaldo integral para la administración con procesos claros y seguimiento continuo del servicio.',
 			context: 'Condominio residencial'
 		}
 	];
@@ -180,10 +180,10 @@
 		Experiencia comprobada
 	</span>
 	<h3 class="text-white text-2xl md:text-3xl font-light mb-4">
-		Organizaciones que confian en HASES
+		Organizaciones que confían en HASES
 	</h3>
 	<p class="mx-auto max-w-2xl text-sm md:text-base text-gray-400 mb-8">
-		Acompañamos clientes en servicios de aseo, mantenimiento y gestion operativa con enfoque en
+		Acompañamos clientes en servicios de aseo, mantenimiento y gestión operativa con enfoque en
 		calidad.
 	</p>
 
@@ -287,7 +287,7 @@
 	</div>
 
 	<p class="mt-5 text-xs text-gray-500 uppercase tracking-wide">
-		Muestra de clientes reales atendidos en Neiva y su area metropolitana.
+		Muestra de clientes reales atendidos en Neiva y su área metropolitana.
 	</p>
 </section>
 

@@ -18,6 +18,6 @@
 		class="pointer-events-auto bg-primary/90 backdrop-blur-md text-white px-6 py-3 rounded-full shadow-glow flex items-center gap-2 text-sm font-bold animate-fade-in-up border border-primary-dark"
 	>
 		<span class="material-symbols-outlined text-[20px]">calendar_month</span>
-		Solicitar cotizacion
+		Solicitar cotización
 	</a>
 </div>
