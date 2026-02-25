@@ -62,38 +62,48 @@
 		<!-- Hero Content -->
 		<div class="absolute inset-0 flex flex-col items-center justify-end px-6 pb-16 text-center">
 			<div class="mb-3 h-1 w-12 bg-gold-accent rounded-full"></div>
-			<h2 class="text-white text-4xl md:text-6xl font-light mb-4 tracking-tight leading-tight">
-				Elevando el <br /><span
+			<h1 class="text-white text-4xl md:text-6xl font-light mb-4 tracking-tight leading-tight">
+				Soluciones integrales para <br /><span
 					class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-400"
-					>Estándar</span
-				> de su Hogar
-			</h2>
+					>organizaciones y copropiedades</span
+				>
+			</h1>
 			<p class="text-gray-300 text-sm md:text-lg font-light leading-relaxed max-w-md mb-8">
-				Limpieza, mantenimiento y jardinería exclusiva para residencias que exigen perfección.
+				Aseo, jardineria, mantenimiento de piscinas y apoyo operativo con enfoque sostenible en
+				Neiva y el Huila.
 			</p>
-			<button
-				class="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-4 text-white shadow-glow transition-all hover:scale-105 hover:bg-primary-dark"
-			>
-				<span class="relative z-10 text-sm font-bold tracking-wide uppercase"
-					>Solicitar Presupuesto Premium</span
+			<div class="flex flex-col sm:flex-row items-center gap-3">
+				<a
+					href="#contacto"
+					class="group relative flex items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-4 text-white shadow-glow transition-all hover:scale-105 hover:bg-primary-dark"
 				>
-				<span
-					class="material-symbols-outlined relative z-10 text-[20px] group-hover:translate-x-1 transition-transform"
-					>arrow_forward</span
+					<span class="relative z-10 text-sm font-bold tracking-wide uppercase"
+						>Solicitar cotizacion</span
+					>
+					<span
+						class="material-symbols-outlined relative z-10 text-[20px] group-hover:translate-x-1 transition-transform"
+						>arrow_forward</span
+					>
+					<div
+						class="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0"
+					></div>
+				</a>
+				<a
+					href="#servicios"
+					class="rounded-full border border-white/25 bg-white/10 px-6 py-3 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-sm transition-colors hover:bg-white/20"
 				>
-				<div
-					class="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0"
-				></div>
-			</button>
+					Ver servicios
+				</a>
+			</div>
 
 			<!-- Slide Indicators -->
 			<div class="flex gap-2 mt-8">
-				{#each slides as _, i}
+				{#each slides as slide, i}
 					<button
 						class="h-1.5 rounded-full transition-all duration-500 {i === currentSlide
 							? 'w-8 bg-gold-accent'
 							: 'w-1.5 bg-white/30 hover:bg-white/50'}"
-						aria-label="Ir a diapositiva {i + 1}"
+						aria-label="Ir a diapositiva {i + 1}: {slide.alt}"
 						onclick={() => {
 							currentSlide = i;
 						}}

@@ -7,22 +7,22 @@
 		{
 			name: 'Reservas de Caña Brava',
 			logo: '/reservasCanaBrava.webp',
-			testimonial: 'Excelente servicio y mantenimiento de áreas verdes.'
+			testimonial: 'Excelente acompañamiento en mantenimiento de zonas verdes y aseo.'
 		},
 		{
-			name: 'Altos de la pradera',
+			name: 'Altos de la Pradera',
 			logo: '/altosPradera.webp',
-			testimonial: 'Siempre puntuales y profesionales. Recomendados.'
+			testimonial: 'Servicio puntual, personal atento y buena coordinacion operativa.'
 		},
 		{
 			name: 'Bambú',
 			logo: '/bambu.webp',
-			testimonial: 'Nuestra piscina se mantiene impecable gracias a ellos.'
+			testimonial: 'Nuestro mantenimiento de piscina mejoro en control y continuidad.'
 		},
 		{
 			name: 'San Pablo',
 			logo: '/sanPablo.webp',
-			testimonial: 'Calidad y atención prioritaria. Estamos muy satisfechos.'
+			testimonial: 'Un aliado confiable para la operacion diaria de nuestras instalaciones.'
 		}
 	];
 
@@ -40,13 +40,23 @@
 	<span
 		class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-gold-accent text-xs font-bold tracking-widest uppercase mb-6"
 	>
-		Testimonios
+		Experiencia comprobada
 	</span>
+	<h3 class="text-white text-2xl md:text-3xl font-light mb-4">
+		Organizaciones que confian en HASES
+	</h3>
+	<p class="mx-auto max-w-2xl text-sm md:text-base text-gray-400 mb-8">
+		Acompanamos clientes en servicios de aseo, mantenimiento y gestion operativa con enfoque en
+		calidad.
+	</p>
 
 	<div class="flex justify-center mb-6">
 		<div class="flex gap-1">
-			{#each Array(5) as _}
-				<span class="material-symbols-outlined text-gold-accent text-sm">star</span>
+			{#each [1, 2, 3, 4, 5] as star}
+				<span
+					class="material-symbols-outlined text-gold-accent text-sm"
+					aria-label="Estrella {star}">star</span
+				>
 			{/each}
 		</div>
 	</div>
@@ -68,21 +78,20 @@
 					/>
 					<div class="text-left">
 						<p class="text-white text-sm font-bold">{clients[currentIndex].name}</p>
-						<p class="text-gray-500 text-xs">Cliente Premium</p>
+						<p class="text-gray-500 text-xs">Cliente corporativo</p>
 					</div>
 				</div>
 			</div>
 		{/key}
 	</div>
 
-	<!-- Dot Navigation -->
 	<div class="flex justify-center gap-2 mt-8">
-		{#each clients as _, i}
+		{#each clients as client, i}
 			<button
 				class="h-1.5 rounded-full transition-all duration-300 {i === currentIndex
 					? 'w-6 bg-gold-accent'
 					: 'w-1.5 bg-white/20 hover:bg-white/40'}"
-				aria-label="Ver testimonio {i + 1}"
+				aria-label="Ver testimonio {i + 1}: {client.name}"
 				onclick={() => {
 					currentIndex = i;
 				}}

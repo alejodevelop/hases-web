@@ -10,14 +10,14 @@
 <Trust />
 <Testimonials />
 
-<!-- Sticky Floating CTA for Mobile -->
 <div
 	class="fixed bottom-6 left-0 right-0 z-40 flex justify-center px-4 md:hidden pointer-events-none"
 >
-	<button
+	<a
+		href="#contacto"
 		class="pointer-events-auto bg-primary/90 backdrop-blur-md text-white px-6 py-3 rounded-full shadow-glow flex items-center gap-2 text-sm font-bold animate-fade-in-up border border-primary-dark"
 	>
 		<span class="material-symbols-outlined text-[20px]">calendar_month</span>
-		Agendar Cita
-	</button>
+		Solicitar cotizacion
+	</a>
 </div>

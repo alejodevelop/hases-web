@@ -38,7 +38,7 @@
 			<span class="text-white text-lg font-bold tracking-[0.1em] uppercase leading-tight"
 				>Hases</span
 			>
-			<span class="text-[10px] text-gold-accent tracking-widest uppercase">Premium Home</span>
+			<span class="text-[10px] text-gold-accent tracking-widest uppercase">Ingenieria S.A.S.</span>
 		</a>
 
 		<!-- Desktop Navigation -->
@@ -63,9 +63,6 @@
 			>
 				Cotizar
 			</a>
-			<button class="text-gray-400 hover:text-white transition-colors" aria-label="Mi cuenta">
-				<span class="material-symbols-outlined text-[22px]">account_circle</span>
-			</button>
 		</div>
 
 		<!-- Mobile: Hamburger Toggle -->

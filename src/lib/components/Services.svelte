@@ -1,46 +1,65 @@
 <script lang="ts">
-	let services = [
+	type Service = {
+		title: string;
+		description: string;
+		image: string;
+		icon: string;
+		scope: string;
+	};
+
+	const services: Service[] = [
 		{
-			title: 'Mantenimiento de Jardines',
+			title: 'Aseo integral y limpieza operativa',
 			description:
-				'Ofrecemos un servicio completo de mantenimiento para que tus áreas verdes luzcan siempre impecables y saludables.',
+				'Mantenemos espacios limpios, ordenados y funcionales en edificios, copropiedades y organizaciones.',
+			image: '/aseo.webp',
+			icon: 'cleaning_services',
+			scope: 'Interiores, zonas comunes y apoyo diario'
+		},
+		{
+			title: 'Jardineria y paisajismo',
+			description:
+				'Disenamos, cuidamos y preservamos zonas verdes para garantizar entornos seguros y bien presentados.',
 			image: '/jardinero.webp',
-			icon: 'yard'
+			icon: 'yard',
+			scope: 'Mantenimiento, poda y embellecimiento'
 		},
 		{
 			title: 'Mantenimiento de piscinas',
 			description:
-				'Contamos con personal altamente capacitado para el mantenimiento y cuidado de piscinas, incluyendo servicios de salvavidas.',
+				'Gestionamos limpieza, control y funcionamiento de piscinas con personal capacitado y suministro de insumos.',
 			image: '/limpiezaPiscina.webp',
-			icon: 'water_drop'
+			icon: 'water_drop',
+			scope: 'Piscineros, salvavidas e insumos'
 		},
 		{
-			title: 'Servicio integral de aseo',
+			title: 'Apoyo operativo y gestion ambiental',
 			description:
-				'Nos encargamos de la limpieza profunda y mantenimiento de espacios, garantizando ambientes impecables.',
-			image: '/aseo.webp',
-			icon: 'cleaning_services'
-		},
-		{
-			title: 'Servicios varios',
-			description:
-				'Ofrecemos soluciones personalizadas a través de alianzas con expertos en distintos campos, cubriendo cualquier necesidad adicional.',
+				'Fortalecemos la operacion de nuestros clientes con auxiliares, servicios complementarios y enfoque en sostenibilidad.',
 			image: '/serviciosVarios.webp',
-			icon: 'handyman'
+			icon: 'groups_2',
+			scope: 'Auxiliares, residuos y asesoria ambiental'
 		}
 	];
 </script>
 
 <section id="servicios" class="px-4 py-12 max-w-7xl mx-auto">
-	<div class="flex items-center justify-between px-2 mb-8">
-		<h3 class="text-white text-2xl font-light tracking-wide">
-			Servicios de <span class="font-bold text-gold-accent">Élite</span>
-		</h3>
-		<button
-			class="text-xs text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+	<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 px-2 mb-8">
+		<div>
+			<h3 class="text-white text-2xl font-light tracking-wide">
+				Servicios <span class="font-bold text-gold-accent">integrales</span>
+			</h3>
+			<p class="text-sm text-gray-400 mt-2 max-w-2xl">
+				Soluciones diseñadas para organizaciones que necesitan operacion continua, calidad y
+				cumplimiento.
+			</p>
+		</div>
+		<a
+			href="#contacto"
+			class="text-xs text-gray-300 hover:text-white transition-colors flex items-center gap-1 uppercase tracking-wide font-semibold"
 		>
-			Ver todo <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-		</button>
+			Solicitar propuesta <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+		</a>
 	</div>
 
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -67,11 +86,9 @@
 					</div>
 					<h4 class="text-xl font-bold text-white mb-2">{service.title}</h4>
 					<p class="text-sm text-gray-300 line-clamp-3 mb-4">{service.description}</p>
-					<button
-						class="text-xs font-bold text-primary hover:text-white transition-colors flex items-center gap-1 uppercase tracking-wider"
-					>
-						Detalles <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-					</button>
+					<p class="text-[11px] font-semibold text-primary uppercase tracking-wider">
+						{service.scope}
+					</p>
 				</div>
 			</div>
 		{/each}
