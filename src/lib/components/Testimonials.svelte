@@ -46,7 +46,7 @@
 		Organizaciones que confian en HASES
 	</h3>
 	<p class="mx-auto max-w-2xl text-sm md:text-base text-gray-400 mb-8">
-		Acompanamos clientes en servicios de aseo, mantenimiento y gestion operativa con enfoque en
+		Acompañamos clientes en servicios de aseo, mantenimiento y gestion operativa con enfoque en
 		calidad.
 	</p>
 
