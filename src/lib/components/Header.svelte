@@ -32,13 +32,25 @@
 		<!-- Logo -->
 		<a
 			href="#inicio"
-			class="flex flex-col items-start shrink-0"
+			class="flex items-center gap-3 shrink-0"
 			onclick={(e) => scrollToSection(e, '#inicio')}
 		>
-			<span class="text-white text-lg font-bold tracking-[0.1em] uppercase leading-tight"
-				>Hases</span
-			>
-			<span class="text-[10px] text-gold-accent tracking-widest uppercase">Ingenieria S.A.S.</span>
+			<img
+				src="/logoHases-removebg.webp"
+				alt="Logo de HASES"
+				class="h-10 w-10 rounded-md bg-black/20 p-1 object-contain ring-1 ring-white/10"
+				loading="eager"
+				decoding="async"
+				width="40"
+				height="40"
+			/>
+			<span class="flex flex-col items-start">
+				<span class="text-white text-lg font-bold tracking-[0.1em] uppercase leading-tight"
+					>Hases</span
+				>
+				<span class="text-[10px] text-gold-accent tracking-widest uppercase">Ingenieria S.A.S.</span
+				>
+			</span>
 		</a>
 
 		<!-- Desktop Navigation -->

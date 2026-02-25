@@ -6,8 +6,23 @@
 	<div class="max-w-7xl mx-auto">
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
 			<div>
-				<h2 class="text-white text-2xl font-bold tracking-[0.1em] uppercase mb-2">Hases</h2>
-				<p class="text-gold-accent text-xs uppercase tracking-widest mb-4">Ingenieria S.A.S.</p>
+				<div class="mb-4 flex items-center gap-3">
+					<img
+						src="/logoHases-removebg.webp"
+						alt="Logo de HASES"
+						class="h-14 w-14 rounded-lg bg-background-dark/60 p-1.5 object-contain ring-1 ring-white/10"
+						loading="lazy"
+						decoding="async"
+						width="56"
+						height="56"
+					/>
+					<div>
+						<h2 class="text-white text-xl font-bold tracking-[0.1em] uppercase leading-tight">
+							Hases
+						</h2>
+						<p class="text-gold-accent text-[11px] uppercase tracking-widest">Ingenieria S.A.S.</p>
+					</div>
+				</div>
 				<p class="text-sm text-gray-400 leading-relaxed">
 					Soluciones integrales de aseo, mantenimiento, jardinería y gestión ambiental para
 					organizaciones en Neiva y el Huila.
