@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	type ClientStory = {
 		name: string;
@@ -14,6 +14,7 @@
 	let currentIndex = $state(0);
 	let transitionPhase = $state<TransitionPhase>('idle');
 	let transitionMs = $state(340);
+	let fadeOutMs = $state(220);
 	let reducedMotion = $state(false);
 	let autoAdvanceTimer: ReturnType<typeof setInterval> | undefined;
 	const imageLoadCache = new Map<string, Promise<void>>();
@@ -24,6 +25,10 @@
 	const MOBILE_TRANSITION_MS = 320;
 
 	const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+	const nextFrame = () =>
+		new Promise<void>((resolve) => {
+			requestAnimationFrame(() => resolve());
+		});
 
 	const preloadImage = (src: string) => {
 		const cached = imageLoadCache.get(src);
@@ -31,23 +36,30 @@
 
 		const promise = new Promise<void>((resolve) => {
 			const image = new Image();
-			let settled = false;
-
-			const done = () => {
-				if (settled) return;
-				settled = true;
-				resolve();
-			};
-
-			image.onload = done;
-			image.onerror = done;
 			image.src = src;
 
 			if (typeof image.decode === 'function') {
-				image.decode().then(done).catch(done);
-			} else if (image.complete) {
-				done();
+				image
+					.decode()
+					.then(() => resolve())
+					.catch(() => {
+						if (image.complete) {
+							resolve();
+							return;
+						}
+						image.onload = () => resolve();
+						image.onerror = () => resolve();
+					});
+				return;
 			}
+
+			if (image.complete) {
+				resolve();
+				return;
+			}
+
+			image.onload = () => resolve();
+			image.onerror = () => resolve();
 		});
 
 		imageLoadCache.set(src, promise);
@@ -164,27 +176,32 @@
 		if (transitionPhase !== 'idle') return;
 		if (nextIndex === currentIndex) return;
 
-		if (fromUser) {
-			startAutoAdvance();
-		}
-
 		if (reducedMotion || transitionMs === 0) {
 			await preloadImage(clients[nextIndex].image);
 			currentIndex = nextIndex;
 			preloadAround(nextIndex);
+			if (fromUser) {
+				startAutoAdvance();
+			}
 			return;
 		}
 
 		transitionPhase = 'out';
-		await wait(transitionMs);
+		await wait(fadeOutMs);
 		await preloadImage(clients[nextIndex].image);
 
 		currentIndex = nextIndex;
 		preloadAround(nextIndex);
 		transitionPhase = 'in';
+		await tick();
+		await nextFrame();
+		transitionPhase = 'idle';
 
 		await wait(transitionMs);
-		transitionPhase = 'idle';
+
+		if (fromUser) {
+			startAutoAdvance();
+		}
 	};
 
 	const next = () => {
@@ -200,20 +217,24 @@
 
 		if (reducedMotion) {
 			transitionMs = 0;
+			fadeOutMs = 0;
 			return;
 		}
 
 		if (window.innerWidth >= 1024) {
 			transitionMs = DESKTOP_TRANSITION_MS;
+			fadeOutMs = Math.max(Math.round(DESKTOP_TRANSITION_MS * 0.58), 170);
 			return;
 		}
 
 		if (window.innerWidth >= 768) {
 			transitionMs = TABLET_TRANSITION_MS;
+			fadeOutMs = Math.max(Math.round(TABLET_TRANSITION_MS * 0.58), 160);
 			return;
 		}
 
 		transitionMs = MOBILE_TRANSITION_MS;
+		fadeOutMs = Math.max(Math.round(MOBILE_TRANSITION_MS * 0.58), 150);
 	};
 
 	onMount(() => {
@@ -253,48 +274,53 @@
 	<div
 		class="relative overflow-hidden rounded-3xl border border-white/10 bg-surface-dark shadow-xl min-h-[540px] md:h-[420px]"
 	>
-		<article
-			class="grid h-full items-stretch md:grid-cols-[1.2fr_1fr] transition-opacity ease-out {transitionPhase ===
-			'out'
-				? 'opacity-0'
-				: 'opacity-100'}"
-			style="transition-duration: {transitionMs}ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"
-		>
-			<div class="relative h-72 md:h-full min-h-[280px] overflow-hidden">
-				<img
-					src={clients[currentIndex].image}
-					alt={clients[currentIndex].alt}
-					class="h-full w-full object-cover"
-					loading="lazy"
-					decoding="async"
-					width="960"
-					height="720"
-				/>
-				<div
-					class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/35 to-transparent"
-				></div>
-				<div class="absolute inset-x-0 bottom-0 p-5 text-left">
-					<p class="text-[11px] font-semibold uppercase tracking-widest text-gold-accent mb-2">
-						{clients[currentIndex].context}
-					</p>
-					<h4 class="client-name text-white text-lg md:text-xl font-semibold leading-snug">
-						{clients[currentIndex].name}
-					</h4>
+		{#key currentIndex}
+			<article
+				class="grid h-full items-stretch md:grid-cols-[1.2fr_1fr] transition-opacity ease-out {transitionPhase ===
+				'idle'
+					? 'opacity-100'
+					: 'opacity-0'}"
+				style="transition-duration: {transitionPhase === 'out'
+					? fadeOutMs
+					: transitionMs}ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"
+			>
+				<div class="relative h-72 md:h-full min-h-[280px] overflow-hidden">
+					<img
+						src={clients[currentIndex].image}
+						alt={clients[currentIndex].alt}
+						class="h-full w-full object-cover"
+						loading="lazy"
+						decoding="async"
+						width="960"
+						height="720"
+					/>
+					<div
+						class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/35 to-transparent"
+					></div>
+					<div class="absolute inset-x-0 bottom-0 p-5 text-left">
+						<p class="text-[11px] font-semibold uppercase tracking-widest text-gold-accent mb-2">
+							{clients[currentIndex].context}
+						</p>
+						<h4 class="client-name text-white text-lg md:text-xl font-semibold leading-snug">
+							{clients[currentIndex].name}
+						</h4>
+					</div>
 				</div>
-			</div>
 
-			<div class="h-full flex flex-col justify-center p-6 md:p-8 text-left bg-background-dark/40">
-				<span class="material-symbols-outlined text-gold-accent text-[28px] mb-3">format_quote</span
-				>
-				<p class="comment-clamp text-gray-200 text-base md:text-lg leading-relaxed">
-					{clients[currentIndex].comment}
-				</p>
-				<div class="mt-6 border-t border-white/10 pt-4">
-					<p class="text-sm font-semibold text-white">{clients[currentIndex].name}</p>
-					<p class="text-xs text-gray-400 uppercase tracking-wide">Cliente real HASES</p>
+				<div class="h-full flex flex-col justify-center p-6 md:p-8 text-left bg-background-dark/40">
+					<span class="material-symbols-outlined text-gold-accent text-[28px] mb-3"
+						>format_quote</span
+					>
+					<p class="comment-clamp text-gray-200 text-base md:text-lg leading-relaxed">
+						{clients[currentIndex].comment}
+					</p>
+					<div class="mt-6 border-t border-white/10 pt-4">
+						<p class="text-sm font-semibold text-white">{clients[currentIndex].name}</p>
+						<p class="text-xs text-gray-400 uppercase tracking-wide">Cliente real HASES</p>
+					</div>
 				</div>
-			</div>
-		</article>
+			</article>
+		{/key}
 	</div>
 
 	<div class="mt-6 flex items-center justify-center gap-3">
