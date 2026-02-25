@@ -15,11 +15,51 @@
 	let transitionPhase = $state<TransitionPhase>('idle');
 	let transitionMs = $state(340);
 	let reducedMotion = $state(false);
+	let autoAdvanceTimer: ReturnType<typeof setInterval> | undefined;
+	const imageLoadCache = new Map<string, Promise<void>>();
 
 	const AUTO_ADVANCE_MS = 5000;
 	const DESKTOP_TRANSITION_MS = 520;
 	const TABLET_TRANSITION_MS = 430;
 	const MOBILE_TRANSITION_MS = 320;
+
+	const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+	const preloadImage = (src: string) => {
+		const cached = imageLoadCache.get(src);
+		if (cached) return cached;
+
+		const promise = new Promise<void>((resolve) => {
+			const image = new Image();
+			let settled = false;
+
+			const done = () => {
+				if (settled) return;
+				settled = true;
+				resolve();
+			};
+
+			image.onload = done;
+			image.onerror = done;
+			image.src = src;
+
+			if (typeof image.decode === 'function') {
+				image.decode().then(done).catch(done);
+			} else if (image.complete) {
+				done();
+			}
+		});
+
+		imageLoadCache.set(src, promise);
+		return promise;
+	};
+
+	const preloadAround = (index: number) => {
+		const normalized = (index + clients.length) % clients.length;
+		const next = (normalized + 1) % clients.length;
+		void preloadImage(clients[normalized].image);
+		void preloadImage(clients[next].image);
+	};
 
 	const clients: ClientStory[] = [
 		{
@@ -104,32 +144,55 @@
 		}
 	];
 
-	const goTo = (index: number) => {
+	const clearAutoAdvance = () => {
+		if (!autoAdvanceTimer) return;
+		clearInterval(autoAdvanceTimer);
+		autoAdvanceTimer = undefined;
+	};
+
+	const startAutoAdvance = () => {
+		clearAutoAdvance();
+		autoAdvanceTimer = setInterval(() => {
+			void goTo(currentIndex + 1);
+		}, AUTO_ADVANCE_MS);
+	};
+
+	const goTo = async (index: number, options?: { fromUser?: boolean }) => {
+		const nextIndex = (index + clients.length) % clients.length;
+		const fromUser = options?.fromUser ?? false;
+
 		if (transitionPhase !== 'idle') return;
-		if (index === currentIndex) return;
+		if (nextIndex === currentIndex) return;
+
+		if (fromUser) {
+			startAutoAdvance();
+		}
+
 		if (reducedMotion || transitionMs === 0) {
-			currentIndex = (index + clients.length) % clients.length;
+			await preloadImage(clients[nextIndex].image);
+			currentIndex = nextIndex;
+			preloadAround(nextIndex);
 			return;
 		}
 
 		transitionPhase = 'out';
+		await wait(transitionMs);
+		await preloadImage(clients[nextIndex].image);
 
-		setTimeout(() => {
-			currentIndex = (index + clients.length) % clients.length;
-			transitionPhase = 'in';
+		currentIndex = nextIndex;
+		preloadAround(nextIndex);
+		transitionPhase = 'in';
 
-			setTimeout(() => {
-				transitionPhase = 'idle';
-			}, transitionMs);
-		}, transitionMs);
+		await wait(transitionMs);
+		transitionPhase = 'idle';
 	};
 
 	const next = () => {
-		goTo(currentIndex + 1);
+		void goTo(currentIndex + 1, { fromUser: true });
 	};
 
 	const previous = () => {
-		goTo(currentIndex - 1);
+		void goTo(currentIndex - 1, { fromUser: true });
 	};
 
 	const syncMotionPreferences = () => {
@@ -155,6 +218,8 @@
 
 	onMount(() => {
 		syncMotionPreferences();
+		preloadAround(currentIndex);
+		startAutoAdvance();
 
 		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const onMotionChange = () => syncMotionPreferences();
@@ -163,10 +228,8 @@
 		mediaQuery.addEventListener('change', onMotionChange);
 		window.addEventListener('resize', onResize);
 
-		const interval = setInterval(next, AUTO_ADVANCE_MS);
-
 		return () => {
-			clearInterval(interval);
+			clearAutoAdvance();
 			mediaQuery.removeEventListener('change', onMotionChange);
 			window.removeEventListener('resize', onResize);
 		};
@@ -191,27 +254,17 @@
 		class="relative overflow-hidden rounded-3xl border border-white/10 bg-surface-dark shadow-xl min-h-[540px] md:h-[420px]"
 	>
 		<article
-			class="grid h-full items-stretch md:grid-cols-[1.2fr_1fr] transition-[opacity,transform] ease-out {transitionPhase ===
+			class="grid h-full items-stretch md:grid-cols-[1.2fr_1fr] transition-opacity ease-out {transitionPhase ===
 			'out'
-				? 'opacity-0 translate-y-2'
-				: 'opacity-100 translate-y-0'}"
+				? 'opacity-0'
+				: 'opacity-100'}"
 			style="transition-duration: {transitionMs}ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"
 		>
-			<div
-				class="relative h-72 md:h-full min-h-[280px] overflow-hidden"
-				style="transition-duration: {Math.max(
-					transitionMs + 120,
-					220
-				)}ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"
-			>
+			<div class="relative h-72 md:h-full min-h-[280px] overflow-hidden">
 				<img
 					src={clients[currentIndex].image}
 					alt={clients[currentIndex].alt}
-					class="h-full w-full object-cover transition-transform"
-					style="transition-duration: {Math.max(
-						transitionMs + 180,
-						260
-					)}ms; transform: {transitionPhase === 'out' ? 'scale(1.035)' : 'scale(1)'};"
+					class="h-full w-full object-cover"
 					loading="lazy"
 					decoding="async"
 					width="960"
@@ -230,16 +283,7 @@
 				</div>
 			</div>
 
-			<div
-				class="h-full flex flex-col justify-center p-6 md:p-8 text-left bg-background-dark/40 transition-[opacity,transform]"
-				style="transition-duration: {Math.max(
-					transitionMs + 60,
-					200
-				)}ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); transform: {transitionPhase ===
-				'out'
-					? 'translateY(6px)'
-					: 'translateY(0)'}; opacity: {transitionPhase === 'out' ? 0.92 : 1};"
-			>
+			<div class="h-full flex flex-col justify-center p-6 md:p-8 text-left bg-background-dark/40">
 				<span class="material-symbols-outlined text-gold-accent text-[28px] mb-3">format_quote</span
 				>
 				<p class="comment-clamp text-gray-200 text-base md:text-lg leading-relaxed">
@@ -271,7 +315,7 @@
 						? 'w-6 bg-gold-accent'
 						: 'w-1.5 bg-white/20 hover:bg-white/40'}"
 					aria-label="Ver cliente {i + 1}: {client.name}"
-					onclick={() => goTo(i)}
+					onclick={() => void goTo(i, { fromUser: true })}
 				></button>
 			{/each}
 		</div>
